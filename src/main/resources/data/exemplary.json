@@ -1,0 +1,533 @@
+{
+  "title": "My Workspace",
+  "items": [
+    {
+      "title": "Shopping & Groceries",
+      "items": [
+        {
+          "details": "flour, sugar, butter, eggs, milk, apples",
+          "title": "Ingredients for apple pie",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:14:08.864151",
+          "isDone": false
+        },
+        {
+          "details": "candles, wine, movie, cheese, grapes",
+          "title": "Props for dinner date",
+          "priority": "HIGH",
+          "deadline": "2025-07-25",
+          "creationDate": "2025-06-22T14:14:35.072190",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Laundry detergent",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:15:17.466432",
+          "isDone": false
+        },
+        {
+          "details": "carrots, pepper, peas, ginger, onions",
+          "title": "Buy more vegetables",
+          "priority": "MEDIUM",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:15:29.068812",
+          "isDone": false
+        }
+      ],
+      "displayMode": "CARDS"
+    },
+    {
+      "title": "Chores & Household",
+      "items": [
+        {
+          "details": "",
+          "title": "Mowing the lawn",
+          "priority": "MEDIUM",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:16:18.300019",
+          "isDone": false
+        },
+        {
+          "details": "update about the broken waterline",
+          "title": "Calling facility manager",
+          "priority": "HIGH",
+          "deadline": "2025-06-23",
+          "creationDate": "2025-06-22T14:16:40.904781",
+          "isDone": false
+        },
+        {
+          "details": "best on a slightly cloudy day",
+          "title": "Cleaning the windows",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:17:52.352947",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Rearranging storage room",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:35:14.593314",
+          "isDone": false
+        }
+      ],
+      "displayMode": "CARDS"
+    },
+    {
+      "title": "States of the USA",
+      "items": [
+        {
+          "details": "",
+          "title": "New York",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:18:29.252538",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Arkansas",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:18:34.342382",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Kansas",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:18:38.668680",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Texas",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:18:42.117485",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Georgia",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:18:45.567754",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "North Carolina",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:18:49.371828",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "South Carolina",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:18:57.450794",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Maine",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:19:03.488307",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Vermont",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:19:06.363526",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Mississippi",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:19:09.968008",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Florida",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:19:25.419543",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Alabama",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:19:41.036308",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Alaska",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:20:29.171723",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Arizona",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:20:34.535401",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "California",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:20:48.285604",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Colorado",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:20:53.899266",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Connecticut",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:21:03.757255",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Delaware",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:21:11.736687",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Hawaii",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:21:37.095556",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Idaho",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:21:42.225445",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Illinois",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:21:51.663212",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Indiana",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:21:57.541058",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Iowa",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:22:01.360710",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Kentucky",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:22:06.757542",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Louisiana",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:22:16.462065",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Maryland",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:22:24.519435",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Massachusetts",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:22:34.379039",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Michigan",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:22:42.928090",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Minnesota",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:22:49.386535",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Missouri",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:23:00.598231",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Montana",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:23:07.117621",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Nebraska",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:23:15.197297",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Nevada",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:23:20.980844",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "New Hampshire",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:23:25.376089",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "New Jersey",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:23:34.187855",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "New Mexico",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:23:45.891247",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "North Dakota",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:24:16.546413",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Ohio",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:24:24.992342",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Oklahoma",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:24:30.961253",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Oregon",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:24:36.266508",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Pennsylvania",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:24:41.774273",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Rhode Island",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:24:50.431879",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "South Dakota",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:03.785684",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Tennessee",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:10.344012",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Utah",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:16.994888",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Virginia",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:26.275366",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Washington",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:31.360957",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "West Virginia",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:37.774489",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Wisconsin",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:44.938331",
+          "isDone": false
+        },
+        {
+          "details": "",
+          "title": "Wyoming",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-22T14:25:56.225149",
+          "isDone": false
+        }
+      ],
+      "displayMode": "TEXT"
+    },
+    {
+      "title": "English Vocabulary",
+      "items": [
+        {
+          "details": "unpleasant mixture of noises",
+          "title": "cacophony",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-14T19:30:17.334306",
+          "isDone": false
+        },
+        {
+          "details": "the warmth of the sun on a winter's day",
+          "title": "apricity",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-14T19:30:55.470336",
+          "isDone": false
+        },
+        {
+          "details": "sounding sweet and smooth",
+          "title": "mellifluous",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-14T19:32:18.769637",
+          "isDone": false
+        },
+        {
+          "details": "being at rest or still",
+          "title": "quiescent",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-14T19:32:39.517330",
+          "isDone": false
+        },
+        {
+          "details": "finding something good without looking",
+          "title": "serendipity",
+          "priority": "LOW",
+          "deadline": null,
+          "creationDate": "2025-06-14T19:33:18.498789",
+          "isDone": false
+        }
+      ],
+      "displayMode": "TEXT"
+    }
+  ]
+}
