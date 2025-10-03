@@ -1,0 +1,12 @@
+unnamed package
+auxiliaries
+controller
+controller.contracts
+model
+model.contracts
+view
+view.contracts
+view.controls
+view.dialogs
+view.pages
+view.panels
