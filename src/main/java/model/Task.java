@@ -47,7 +47,12 @@ public class Task extends AbstractData
 
     /** Creates an empty task with the current date as the creation date. */
     public Task() {
-        creationDateTime = LocalDateTime.now();
+        this.title = "";
+        this.details = "";
+        this.isDone = false;
+        this.priority = Priority.MEDIUM;
+        this.deadline = null;
+        this.creationDateTime = LocalDateTime.now();
     }
 
 
