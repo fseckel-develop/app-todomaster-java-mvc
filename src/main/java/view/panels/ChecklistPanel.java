@@ -1,6 +1,6 @@
 package view.panels;
 
-import controller.WorkspacePageController;
+import controller.contracts.IDataPanelListener;
 import model.Checklist;
 import auxiliaries.FontLoader;
 import view.controls.MenuButton;
@@ -34,7 +34,7 @@ public class ChecklistPanel extends AbstractDataPanel<Checklist>
      * @param controller the controller that handles user actions for this panel
      * @throws IllegalArgumentException if {@code controller} is {@code null}
      */
-    public ChecklistPanel(Checklist dataToObserve, WorkspacePageController controller) {
+    public ChecklistPanel(Checklist dataToObserve, IDataPanelListener<Checklist> controller) {
         super(dataToObserve, controller);
         buildUI();
         refreshView();

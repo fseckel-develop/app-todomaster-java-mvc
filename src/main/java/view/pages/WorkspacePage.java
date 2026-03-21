@@ -1,6 +1,6 @@
 package view.pages;
 
-import controller.WorkspacePageController;
+import controller.contracts.IWorkspacePageListener;
 import model.Checklist;
 import model.Workspace;
 import view.controls.AddButton;
@@ -21,7 +21,7 @@ import java.awt.*;
 public class WorkspacePage extends AbstractCollectionPage<Workspace, Checklist>
 {
     /** The controller that handles user interactions for the workspace page */
-    private final WorkspacePageController controller;
+    private final IWorkspacePageListener controller;
 
 
     /**
@@ -30,7 +30,7 @@ public class WorkspacePage extends AbstractCollectionPage<Workspace, Checklist>
      * @param dataToObserve the workspace model to observe and display
      * @param controller the controller handling actions triggered by this page's components
      */
-    public WorkspacePage(Workspace dataToObserve, WorkspacePageController controller) {
+    public WorkspacePage(Workspace dataToObserve, IWorkspacePageListener controller) {
         super(dataToObserve);
         this.controller = controller;
         buildUI();

@@ -1,6 +1,6 @@
 package view.pages;
 
-import controller.ChecklistPageController;
+import controller.contracts.IChecklistPageListener;
 import model.Checklist;
 import model.Task;
 import auxiliaries.TaskSorter;
@@ -22,7 +22,7 @@ import java.awt.*;
 public class ChecklistPage extends AbstractCollectionPage<Checklist, Task>
 {
     /** Controller that handles user actions on this page. */
-    private final ChecklistPageController controller;
+    private final IChecklistPageListener controller;
 
     /** The current sort mode for ordering displayed tasks. */
     private TaskSorter.Mode sortMode;
@@ -33,7 +33,7 @@ public class ChecklistPage extends AbstractCollectionPage<Checklist, Task>
      * the displayed list of tasks in {@link TaskSorter.Mode#OLDEST_FIRST} order.
      * @param controller the controller that processes user interactions on this page
      */
-    public ChecklistPage(ChecklistPageController controller) {
+    public ChecklistPage(IChecklistPageListener controller) {
         super(new Checklist());
         this.controller = controller;
         this.sortMode = TaskSorter.Mode.OLDEST_FIRST;
