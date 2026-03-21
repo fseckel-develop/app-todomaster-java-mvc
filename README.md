@@ -1,11 +1,17 @@
 # 📋 ToDoMaster - Office Tool for Task Management
 
-![Language](https://img.shields.io/badge/Language-Java%2017+-orange) ![Maven](https://img.shields.io/badge/Build-Maven-blue) ![Architecture](https://img.shields.io/badge/Architecture-MVC-green)
+![Language](https://img.shields.io/badge/Language-Java%2017+-orange) ![Maven](https://img.shields.io/badge/Build-Maven-blue) ![Architecture](https://img.shields.io/badge/Architecture-MVC-purple) ![Tests](https://img.shields.io/badge/Tests-JUnit-green)
 
-**TodoMaster** is a desktop **task management application** built with **Java Swing** using a clean **MVC architecture** and several classic design patterns. It allows users to organise tasks into checklists, manage priorities and deadlines, and persist data between sessions using JSON storage. The project demonstrates **object-oriented design**, **MVC architecture**, and reactive UI updates using the **Observer pattern**.
+**TodoMaster** is a desktop **task management application** built with **Java Swing** using a clean **MVC architecture** and several classic design patterns. It allows users to organise tasks into checklists, manage priorities and deadlines, and persist data between sessions using JSON storage.
+
+The project demonstrates:
+- object-oriented design
+- decoupled MVC architecture
+- testable controller design
+- reactive UI updates via the Observer pattern
 
 ---
-## ⭐ Key Features
+## ✨ Key Features
 
 - Workspace containing multiple checklists
 - Task management with:
@@ -24,6 +30,7 @@
 	- Flowing text view
 - Automatic data persistence using JSON
 - Auto-save on application exit
+- Unit-tested controller and model logic
 
 ---
 ## 📸 Screenshots / Demonstration
@@ -40,16 +47,16 @@
 ---
 ## 🚀 Running the Application
 
-**Requirements**:
+Requirements:
 - Java **17+**
 - Maven
 
-**Build from Repository Root:**
+Build from Repository Root:
 ```shell
 mvn clean package
 ```
 
-**Run from Repository Root:**
+Run from Repository Root:
 ```shell
 mvn exec:java -Dexec.mainClass="Main"
 ```
@@ -74,6 +81,8 @@ graph LR
 
 A detailed UML diagram illustrating the architecture is available at [**`uml/class_diagram.png`**](uml/class_diagram.png).
 
+⚠️ *Note: The UML may slightly differ from the latest refactoring (interface-based decoupling).*
+
 ![UML Diagram](uml/class_diagram.png)
 
 ### Key Design Patterns
@@ -88,37 +97,56 @@ A detailed UML diagram illustrating the architecture is available at [**`uml/cla
 ## 🗃️ Project Structure
 
 ```text
-src/main/java
+src
 │
-├── App.java
-├── Main.java
+├── main/java
+│   │
+│   ├── App.java				→ Composition root (application wiring)
+│   ├── Main.java				→ Entry point
+│   │
+│   ├── controller/
+│   │   ├── AppController       		→ Navigation implementation
+│   │   ├── WorkspacePageController
+│   │   ├── ChecklistPageController
+│   │   └── contracts/          		→ Controller abstractions
+│   │       ├── IAppNavigator
+│   │       ├── IUserDialogService
+│   │       ├── IWorkspacePageListener
+│   │       └── IChecklistPageListener
+│   │
+│   ├── model/                 → Core domain logic
+│   │   ├── Workspace
+│   │   ├── Checklist
+│   │   ├── Task
+│   │   ├── AbstractData
+│   │   └── AbstractCollection
+│   │
+│   ├── view/                  → UI components (Swing)
+│   │   ├── pages/
+│   │   ├── panels/
+│   │   ├── dialogs/
+│   │   └── controls/
+│   │
+│   ├── auxiliaries/           → Utilities
+│   │   ├── JsonFileStorage
+│   │   ├── TaskSorter
+│   │   └── FontLoader
+│   │
+│   └── resources/
+│       ├── data/exemplary.json
+│       └── fonts/
 │
-├── controller/            → Application and page controllers
-│   ├── AppController
-│   ├── WorkspacePageController
-│   └── ChecklistPageController
-│
-├── model/                 → Core domain objects
-│   ├── Workspace
-│   ├── Checklist
-│   ├── Task
-│   ├── AbstractData
-│   └── AbstractCollection
-│
-├── view/                  → UI components
-│   ├── pages              → Workspace and checklist pages
-│   ├── panels             → Task and checklist panels
-│   ├── dialogs            → Dialogs for editing/creating data
-│   └── controls           → Buttons and UI controls
-│
-├── auxiliaries/           → Utility classes
-│   ├── JsonFileStorage
-│   ├── TaskSorter
-│   └── FontLoader
-│
-└── resources/
-    ├── data/exemplary.json
-    └── fonts/
+├── test/java
+│   │
+│   ├── controller/            				→ Controller unit tests
+│   │   ├── ChecklistPageControllerTests
+│   │   ├── WorkspacePageControllerTests
+│   │   ├── FakeDialogService      			→ Test double for dialogs
+│   │   └── FakeAppNavigator       			→ Test double for navigation
+│   │
+│   ├── model/                 → Model tests
+│   ├── auxiliaries/           → Utility tests
+│   └── view/                  → View logic tests
 ```
 
 Additional directories:
@@ -126,7 +154,6 @@ Additional directories:
 ```text
 doc/      → generated Javadoc documentation
 uml/      → UML diagram for the project
-target/   → Maven build output
 ```
 
 ---
@@ -135,9 +162,38 @@ target/   → Maven build output
 Application data is automatically saved to `~/toDoMaster-data.json`. If no data file exists on startup, the application loads an example workspace from the bundled resource `src/main/resources/data/exemplary.json`.
 
 ---
+## 🧪 Testing
+
+The project includes a unit test suite built with **JUnit 5**.
+
+What is tested:
+- Model logic (Workspace, Checklist, Task)
+- Sorting logic (TaskSorter)
+- Controller behavior:
+  - checklist operations
+  - workspace interactions
+  - navigation triggers
+  - View interaction logic via listener abstractions
+
+Instead of mocking complex UI-heavy classes, the project uses:
+- `MockDialogService` → simulates user input
+- `MockAppNavigator` → captures navigation calls
+
+Run tests:
+```shell
+mvn test
+```
+
+---
 ## 📖 Documentation
 
-Full API documentation is generated via Javadoc and available via the file `doc/index.html`
+Full API documentation is generated via:
+
+```shell
+mvn javadoc:javadoc
+```
+
+Then all documenting files are available under `doc/apidocs/index.html`.
 
 ---
 ## 🎯 What This Project Demonstrates
