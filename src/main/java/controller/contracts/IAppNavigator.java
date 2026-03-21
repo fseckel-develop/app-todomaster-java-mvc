@@ -9,17 +9,13 @@ import javax.swing.*;
  * Defines an abstraction for application-level navigation and UI coordination.
  * <p>
  * Controllers use this interface to interact with the application shell
- * (e.g., switching pages, accessing the main window, retrieving global data)
- * without depending on a concrete implementation such as {@code AppController}.
+ * (for example, switching pages, accessing the main window, and retrieving
+ * global data) without depending on a concrete implementation such as
+ * {@code AppController}.
  * </p>
- *
  * <p>
- * This abstraction enables:
- * <ul>
- *   <li>Decoupling controllers from Swing-specific logic</li>
- *   <li>Improved testability using fake or mock implementations</li>
- *   <li>Flexible replacement of the application shell if needed</li>
- * </ul>
+ * This abstraction improves testability and reduces coupling between
+ * page controllers and the Swing application shell.
  * </p>
  */
 public interface IAppNavigator 
