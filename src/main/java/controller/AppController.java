@@ -6,6 +6,9 @@ import view.pages.WorkspacePage;
 import view.pages.ChecklistPage;
 
 import javax.swing.*;
+
+import controller.contracts.IAppNavigator;
+
 import java.awt.*;
 
 
@@ -15,7 +18,7 @@ import java.awt.*;
  * interaction between the Workspace and Checklist pages. It also handles
  * application lifecycle behavior, such as saving data on close. </p>
  */
-public class AppController
+public class AppController implements IAppNavigator
 {
     /** The main application window. */
     private final JFrame window;
@@ -28,19 +31,14 @@ public class AppController
 
 
     /**
-     * Constructs a new AppController to control the provided workspace. <p>
-     * Sets up the main application window, links page controllers,
-     * and prepares the workspace and checklist pages for use.
-     * Also adds a listener to save data on close. </p>
-     * @param data the workspace to manage
+     * Constructs a new {@code AppController}.
+     * <p>
+     * Initializes the main application window. Page controllers must be created
+     * separately and registered via {@link #registerPage(JPanel)}.
+     * </p>
      */
-    public AppController(Workspace data) {
-        if (data == null) {
-            throw new IllegalArgumentException("Workspace data cannot be null");
-        }
+    public AppController() {
         this.window = buildWindow();
-        new WorkspacePageController(this, data);
-        new ChecklistPageController(this);
     }
 
 
@@ -52,7 +50,7 @@ public class AppController
     private JFrame buildWindow() {
         var window = new JFrame();
         window.setSize(650, 830);
-        window.setTitle("ToDo Master");
+        window.setTitle("ToDoMaster");
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setLocationRelativeTo(null);
         window.setBackground(Color.BLACK);
