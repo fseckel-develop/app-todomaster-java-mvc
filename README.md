@@ -1,6 +1,6 @@
 # 📋 ToDoMaster - Office Tool for Task Management
 
-![Language](https://img.shields.io/badge/Language-Java%2017+-orange) ![Maven](https://img.shields.io/badge/Build-Maven-blue) ![Architecture](https://img.shields.io/badge/Architecture-MVC-purple) ![Tests](https://img.shields.io/badge/Tests-JUnit-green)
+![Language](https://img.shields.io/badge/Language-Java%2017+-orange) ![Maven](https://img.shields.io/badge/Build-Maven-blue) ![Tests](https://img.shields.io/badge/Tests-JUnit-green) ![Architecture](https://img.shields.io/badge/Architecture-MVC-purple) [![CI](https://github.com/fseckel-develop/app-todomaster-java-mvc/actions/workflows/ci.yml/badge.svg)](https://github.com/fseckel-develop/app-todomaster-java-mvc/actions/workflows/ci.yml)
 
 **TodoMaster** is a desktop **task management application** built with **Java Swing** using a clean **MVC architecture** and several classic design patterns. It allows users to organise tasks into checklists, manage priorities and deadlines, and persist data between sessions using JSON storage.
 
