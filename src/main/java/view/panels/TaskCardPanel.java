@@ -1,6 +1,6 @@
 package view.panels;
 
-import controller.ChecklistPageController;
+import controller.contracts.IDataPanelListener;
 import model.Task;
 import auxiliaries.FontLoader;
 import view.controls.MenuButton;
@@ -47,7 +47,7 @@ public class TaskCardPanel extends AbstractDataPanel<Task>
      * @param controller the controller to receive edit, delete, and select events
      * @throws IllegalArgumentException if the controller is null
      */
-    public TaskCardPanel(Task dataToObserve, ChecklistPageController controller) {
+    public TaskCardPanel(Task dataToObserve, IDataPanelListener<Task> controller) {
         super(dataToObserve, controller);
         buildUI();
         refreshView();
