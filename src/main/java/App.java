@@ -1,5 +1,8 @@
 import auxiliaries.JsonFileStorage;
 import controller.AppController;
+import controller.ChecklistPageController;
+import controller.SwingDialogService;
+import controller.WorkspacePageController;
 import model.Workspace;
 import auxiliaries.FontLoader;
 
@@ -32,11 +35,14 @@ public class App
 
     /**
      * Private constructor to enforce the Singleton pattern. <p>
-     * Loads the workspace data from a file and constructs the controller.
+     * Loads the workspace data from a file and constructs the needed controllers.
      */
     private App() {
         var workspaceToControl = JsonFileStorage.loadWorkspaceData();
-        controller = new AppController(workspaceToControl);
+        controller = new AppController();
+        var dialogService = new SwingDialogService(controller.getWindow());
+        new WorkspacePageController(controller, workspaceToControl, dialogService);
+        new ChecklistPageController(controller, dialogService);
     }
 
 
