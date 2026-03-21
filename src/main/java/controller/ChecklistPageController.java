@@ -1,10 +1,11 @@
 package controller;
 
+import controller.contracts.IAppNavigator;
 import controller.contracts.IChecklistPageListener;
+import controller.contracts.IUserDialogService;
 import model.Checklist;
 import model.Task;
 import auxiliaries.TaskSorter;
-import view.dialogs.*;
 import view.pages.ChecklistPage;
 
 
@@ -20,7 +21,10 @@ import view.pages.ChecklistPage;
 public class ChecklistPageController implements IChecklistPageListener
 {
     /** The main application controller that manages view transitions. */
-    private final AppController appController;
+    private final IAppNavigator appController;
+
+    /** The dialog service used for user interactions */
+    private final IUserDialogService dialogService;
 
     /** The page that displays the current checklist. */
     private final ChecklistPage checklistPage;
@@ -28,14 +32,19 @@ public class ChecklistPageController implements IChecklistPageListener
 
     /**
      * Constructs a new ChecklistPageController.
-     * @param appController the main application controller; must not be {@code null}
-     * @throws IllegalArgumentException if {@code navigator} is {@code null}
+     * @param appController the main application controller responsible for navigation; must not be {@code null}
+     * @param dialogService the dialog service used for user interactions; must not be {@code null}
+     * @throws IllegalArgumentException if {@code appController} or {@code dialogService} is {@code null}
      */
-    public ChecklistPageController(AppController appController) {
+    public ChecklistPageController(IAppNavigator appController, IUserDialogService dialogService) {
         if (appController == null) {
             throw new IllegalArgumentException("AppController cannot be null");
         }
+        if (dialogService == null) {
+            throw new IllegalArgumentException("DialogService cannot be null");
+        }
         this.appController = appController;
+        this.dialogService = dialogService;
         this.checklistPage = new ChecklistPage(this);
         this.appController.registerPage(checklistPage);
     }
@@ -47,10 +56,9 @@ public class ChecklistPageController implements IChecklistPageListener
      */
     @Override
     public void onRenameTitleRequested() {
-        RenameDataDialog<Checklist> dialog = new RenameDataDialog<>(checklistPage.getObservedData(), appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
-            checklistPage.getObservedData().setTitle(dialog.getEditedData().getTitle());
+        Checklist edited = dialogService.requestChecklistRename(checklistPage.getObservedData());
+        if (edited != null) {
+            checklistPage.getObservedData().setTitle(edited.getTitle());
         }
     }
 
@@ -61,10 +69,9 @@ public class ChecklistPageController implements IChecklistPageListener
      */
     @Override
     public void onAddNewItemRequested() {
-        CreateTaskDialog dialog = new CreateTaskDialog(appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
-            checklistPage.getObservedData().add(dialog.getEditedData());
+        Task created = dialogService.requestTaskCreation();
+        if (created != null) {
+            checklistPage.getObservedData().add(created);
         }
     }
 
@@ -75,10 +82,7 @@ public class ChecklistPageController implements IChecklistPageListener
      */
     @Override
     public void onClearRequested() {
-        ClearCollectionDialog<Checklist, Task> dialog =
-                new ClearCollectionDialog<>(checklistPage.getObservedData(), appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
+        if (dialogService.confirmClearChecklist(checklistPage.getObservedData())) {
             checklistPage.getObservedData().clear();
         }
     }
@@ -91,9 +95,7 @@ public class ChecklistPageController implements IChecklistPageListener
      */
     @Override
     public void onDeleteListRequested(Checklist listToDelete) {
-        DeleteDataDialog<Checklist> dialog = new DeleteDataDialog<>(listToDelete, appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
+        if (dialogService.confirmDeleteChecklist(listToDelete)) {
             appController.getWorkspace().remove(listToDelete);
             appController.showWorkspacePage();
         }
@@ -134,13 +136,12 @@ public class ChecklistPageController implements IChecklistPageListener
      */
     @Override
     public void onEditItemRequested(Task itemToEdit) {
-        EditTaskDialog dialog = new EditTaskDialog(itemToEdit, appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
-            itemToEdit.setTitle(dialog.getEditedData().getTitle());
-            itemToEdit.setDetails(dialog.getEditedData().getDetails());
-            itemToEdit.setPriority(dialog.getEditedData().getPriority());
-            itemToEdit.setDeadline(dialog.getEditedData().getDeadline());
+        Task edited = dialogService.requestTaskEdit(itemToEdit);
+        if (edited != null) {
+            itemToEdit.setTitle(edited.getTitle());
+            itemToEdit.setDetails(edited.getDetails());
+            itemToEdit.setPriority(edited.getPriority());
+            itemToEdit.setDeadline(edited.getDeadline());
         }
     }
 
@@ -152,9 +153,7 @@ public class ChecklistPageController implements IChecklistPageListener
      */
     @Override
     public void onDeleteItemRequested(Task taskToDelete) {
-        DeleteDataDialog<Task> dialog = new DeleteDataDialog<>(taskToDelete, appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
+        if (dialogService.confirmDeleteTask(taskToDelete)) {
             checklistPage.getObservedData().remove(taskToDelete);
         }
     }

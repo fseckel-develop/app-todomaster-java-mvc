@@ -1,7 +1,8 @@
 package controller;
 
+import controller.contracts.IAppNavigator;
+import controller.contracts.IUserDialogService;
 import controller.contracts.IWorkspacePageListener;
-import view.dialogs.*;
 import model.*;
 import view.pages.WorkspacePage;
 
@@ -18,7 +19,10 @@ import view.pages.WorkspacePage;
 public class WorkspacePageController implements IWorkspacePageListener
 {
     /** The main application controller for navigating between pages. */
-    private final AppController appController;
+    private final IAppNavigator appController;
+
+    /** The dialog service used for user interactions */
+    private final IUserDialogService dialogService;
 
     /** The page that displays the current workspace. */
     private final WorkspacePage workspacePage;
@@ -26,17 +30,21 @@ public class WorkspacePageController implements IWorkspacePageListener
 
     /**
      * Constructs a new {@code WorkspacePageController}.
-     * @param appController the main application controller for view/page management
-     * @param data the workspace data to be controlled
-     * @throws IllegalArgumentException if the navigator or data is null
+     * @param appController the main application controller responsible for navigation; must not be {@code null}
+     * @param data the workspace data to be managed; must not be {@code null}
+     * @param dialogService the dialog service used for user interactions; must not be {@code null}
+     * @throws IllegalArgumentException if any argument is {@code null}
      */
-    public WorkspacePageController(AppController appController, Workspace data) {
+    public WorkspacePageController(IAppNavigator appController, Workspace data, IUserDialogService dialogService) {
         if (appController == null) {
             throw new IllegalArgumentException("AppController cannot be null");
         } else if (data == null) {
             throw new IllegalArgumentException("Workspace data cannot be null");
+        } else if (dialogService == null) {
+            throw new IllegalArgumentException("DialogService cannot be null");
         }
         this.appController = appController;
+        this.dialogService = dialogService;
         this.workspacePage = new WorkspacePage(data, this);
         this.appController.registerPage(workspacePage);
     }
@@ -48,11 +56,9 @@ public class WorkspacePageController implements IWorkspacePageListener
      */
     @Override
     public void onRenameTitleRequested() {
-        RenameDataDialog<Workspace> dialog =
-                new RenameDataDialog<>(workspacePage.getObservedData(), appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
-            workspacePage.getObservedData().setTitle(dialog.getEditedData().getTitle());
+        Workspace edited = dialogService.requestWorkspaceRename(workspacePage.getObservedData());
+        if (edited != null) {
+            workspacePage.getObservedData().setTitle(edited.getTitle());
         }
     }
 
@@ -63,10 +69,9 @@ public class WorkspacePageController implements IWorkspacePageListener
      */
     @Override
     public void onAddNewItemRequested() {
-        CreateChecklistDialog dialog = new CreateChecklistDialog(appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
-            workspacePage.getObservedData().add(dialog.getEditedData());
+        Checklist created = dialogService.requestChecklistCreation();
+        if (created != null) {
+            workspacePage.getObservedData().add(created);
         }
     }
 
@@ -77,10 +82,7 @@ public class WorkspacePageController implements IWorkspacePageListener
      */
     @Override
     public void onClearRequested() {
-        ClearCollectionDialog<Workspace, Checklist> dialog =
-                new ClearCollectionDialog<>(workspacePage.getObservedData(), appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
+        if (dialogService.confirmClearWorkspace(workspacePage.getObservedData())) {
             workspacePage.getObservedData().clear();
         }
     }
@@ -93,11 +95,9 @@ public class WorkspacePageController implements IWorkspacePageListener
      */
     @Override
     public void onEditItemRequested(Checklist itemToEdit) {
-        RenameDataDialog<Checklist> dialog =
-                new RenameDataDialog<>(itemToEdit, appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
-            itemToEdit.setTitle(dialog.getEditedData().getTitle());
+        Checklist edited = dialogService.requestChecklistRename(itemToEdit);
+        if (edited != null) {
+            itemToEdit.setTitle(edited.getTitle());
         }
     }
 
@@ -109,10 +109,7 @@ public class WorkspacePageController implements IWorkspacePageListener
      */
     @Override
     public void onDeleteItemRequested(Checklist listToDelete) {
-        DeleteDataDialog<Checklist> dialog =
-                new DeleteDataDialog<>(listToDelete, appController.getWindow());
-        dialog.setVisible(true);
-        if (dialog.wasConfirmed()) {
+        if (dialogService.confirmDeleteChecklist(listToDelete)) {
             workspacePage.getObservedData().remove(listToDelete);
         }
     }
